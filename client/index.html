@@ -5,33 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TelePost</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script defer src="static/src/index.js"></script>
+    <script defer src="static/js/index.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
    <header class="w3-container w3-margin w3-green">
-      <div >
-         <h2>TelePost</h2>
-      </div>
+      <h2>TelePost</h2>
    </header>
    <div class="w3-container">
       <form id="post-form" class="w3-container">
          <p>
             <label>Name</label>
-            <input class="w3-input" type="text" name="name" maxlength="10">
+            <input class="w3-input" type="text" name="username" maxlength="10" required>
          </p>
          <p>
             <label>Title</label>
-            <input class="w3-input" type="text" name="title">
+            <input class="w3-input" type="text" name="title" required>
          </p>
          <p>
             <label>Body</label>
-            <textarea class="w3-input" rows="4" columns="50" name="body">
+            <textarea class="w3-input" rows="4" columns="50" name="post_body" required>
 
             </textarea>
          </p>
          <input class="w3-btn w3-round-large w3-amber" type="submit" value="Publish">
       </form>
+      <div class="w3-container w3-margin">
+         <p id="output" hidden>output</p>
+      </div>
    </div>
 </body>
 </html>
