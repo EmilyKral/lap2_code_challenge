@@ -1,18 +1,18 @@
-const db = require("../dbConfig");
+const db = require("../db_config/config");
 
 class Post {
 	constructor(data) {
 		this.id = data.id;
 		this.title = data.title;
-		this.user = data.user;
+		this.username = data.username;
 		this.post_body = data.post_body;
 	}
 
 	static get all() {
 		return new Promise(async (resolve, reject) => {
 			try {
-				const postsData = db.query(`SELECT * FROM posts;`);
-				const posts = postsData.map(post => new Post(post));
+				const postsData = await db.query(`SELECT * FROM posts;`);
+				const posts = postsData.rows.map(post => new Post(post));
 				resolve(posts);
 			} catch (error) {
 				reject("Error retrieving posts");
@@ -23,7 +23,7 @@ class Post {
 	static findById(id) {
 		return new Promise(async (resolve, reject) => {
 			try {
-				const postData = db.query(`SELECT * FROM posts WHERE id = $1;`, [id]);
+				const postData = await db.query(`SELECT * FROM posts WHERE id = $1;`, [id]);
 				const post = new Post(postData.rows[0]);
 				resolve(post);
 			} catch (error) {
@@ -32,12 +32,12 @@ class Post {
 		});
 	}
 
-	static create(title, user, post_body) {
+	static create(title, username, post_body) {
 		return new Promise(async (resolve, reject) => {
 			try {
-				const postData = db.query(
-					`INSERT INTO posts (title, user, post_body) VALUES ($1 $2 $3) RETURNING *;`,
-					[title, user, post_body]
+				const postData = await db.query(
+					`INSERT INTO posts (title, username, post_body) VALUES ($1 $2 $3) RETURNING *;`,
+					[title, username, post_body]
 				);
 				const post = new Post(postData.rows[0]);
 				resolve(post);

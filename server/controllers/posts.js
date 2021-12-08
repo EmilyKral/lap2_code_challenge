@@ -23,7 +23,7 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
 	try {
-		const post = await Post.create(req.body.title, req.body.user, req.body.post_body);
+		const post = await Post.create(req.body.title, req.body.username, req.body.post_body);
 		res.status(201).json({ post });
 	} catch (error) {
 		res.status(422).json({ error });
