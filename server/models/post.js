@@ -36,7 +36,7 @@ class Post {
 		return new Promise(async (resolve, reject) => {
 			try {
 				const postData = await db.query(
-					`INSERT INTO posts (title, username, post_body) VALUES ($1 $2 $3) RETURNING *;`,
+					`INSERT INTO posts (title, username, post_body) VALUES ($1, $2, $3) RETURNING *;`,
 					[title, username, post_body]
 				);
 				const post = new Post(postData.rows[0]);
