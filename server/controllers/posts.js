@@ -16,10 +16,24 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
 	try {
 		const post = await Post.findById(parseInt(req.params.id));
-		// res.status(200).json({ post });
+		/*res.status(200).json({ post });
 		res.sendFile("post.html", {
 			root: path.join(__dirname, "./")
-		});
+		});*/
+		const html = `
+		<!doctype html>
+    	<html>
+      	<head>
+        	<title>TelePost</title>
+      	</head>
+      	<body>
+        	<h1>${post.title}</h1> 
+			<p>${post.post_body}</p>
+			<h3>Author: ${post.username}</h3>   
+      	</body>
+    	</html>`
+
+  	 	res.send(html)
 	} catch (error) {
 		res.status(404).json({ error });
 	}
