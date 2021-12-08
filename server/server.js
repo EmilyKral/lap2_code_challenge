@@ -5,6 +5,10 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
+const path = require("path");
+server.set("views", path.join(__dirname, "views")); // creates a path to the views directory
+server.set("view engine", "ejs");
+
 const postRoutes = require("./controllers/posts");
 server.use("/posts", postRoutes);
 
