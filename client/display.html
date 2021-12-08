@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TelePost</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="static/src/index.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+   <header class="w3-container w3-margin w3-green">
+      <div >
+         <h2>TelePost</h2>
+      </div>
+   </header>
+   <div class="w3-container">
+      <form id="post-form" class="w3-container">
+         <p>
+            <label>Name</label>
+            <input class="w3-input" type="text" name="name" maxlength="10">
+         </p>
+         <p>
+            <label>Title</label>
+            <input class="w3-input" type="text" name="title">
+         </p>
+         <p>
+            <label>Body</label>
+            <textarea class="w3-input" rows="4" columns="50" name="body">
+
+            </textarea>
+         </p>
+         <input class="w3-btn w3-round-large w3-amber" type="submit" value="Publish">
+      </form>
+   </div>
+</body>
+</html>
