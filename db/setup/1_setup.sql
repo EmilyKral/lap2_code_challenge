@@ -4,5 +4,5 @@ CREATE TABLE posts (
     id serial PRIMARY KEY,
     title varchar,
     user varchar,
-    body varchar
+    post_body varchar
 );

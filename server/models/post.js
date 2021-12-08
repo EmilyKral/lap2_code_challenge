@@ -5,7 +5,7 @@ class Post {
 		this.id = data.id;
 		this.title = data.title;
 		this.user = data.user;
-		this.body = data.body;
+		this.post_body = data.post_body;
 	}
 
 	static get all() {
@@ -32,12 +32,12 @@ class Post {
 		});
 	}
 
-	static create(title, user, body) {
+	static create(title, user, post_body) {
 		return new Promise(async (resolve, reject) => {
 			try {
 				const postData = db.query(
-					`INSERT INTO posts (title, user, body) VALUES ($1 $2 $3) RETURNING *;`,
-					[title, user, body]
+					`INSERT INTO posts (title, user, post_body) VALUES ($1 $2 $3) RETURNING *;`,
+					[title, user, post_body]
 				);
 				const post = new Post(postData.rows[0]);
 				resolve(post);
