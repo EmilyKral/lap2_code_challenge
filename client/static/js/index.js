@@ -1,6 +1,5 @@
 const serverAPI = 'http://localhost:3000'
 const postForm = document.querySelector('#post-form');
-const displayOutput = document.querySelector('#display-output')
 const output = document.querySelector('#output')
 
 // Bind event listeners
@@ -16,12 +15,7 @@ function display(message) {
 async function createPost(postData) {
     try {
         const res = await axios.post(`${serverAPI}/posts/`, postData);
-        const postLink = `${serverAPI}/posts/${res.data.post.id}`;
-        const anchor = document.createElement('a');
-        anchor.setAttribute('href', postLink);
-        anchor.innerText = postLink;
-        displayOutput.appendChild(anchor);
-        display(`Your post has been created, check out the link!`)
+        window.location.href = `${serverAPI}/posts/${res.data.post.id}`;
     } catch(err) {
         display(`Oops! there was an issue: ${err.message}`);
     }
