@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your post</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+    <header class="w3-container w3-margin w3-green">
+        <h2>TelePost</h2>
+    </header>
+    <div class="w3-container">
+        <h2><%= post.title%></h2>
+        <p><%= post.post_body%></p>
+        <h3>Author: <%= post.username%></h3>
+        <a href="http://localhost:8080"><button class="w3-btn w3-round-large w3-amber">Make a new post</button></a>
+    </div>
+</body>
+</html>
